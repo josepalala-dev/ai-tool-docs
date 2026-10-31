@@ -1,0 +1,42 @@
+name: Validation method
+description: Your project needed a way of proving "done" that the formats do not cover.
+title: "[validation] "
+labels: ["validation-method"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        `docs/validation/README.md` lists the methods that have been needed so far. It is not
+        a complete list and was never meant to be.
+  - type: input
+    id: method
+    attributes:
+      label: The method
+      placeholder: "contract test, snapshot test, migration dry-run, load test, accessibility audit…"
+    validations:
+      required: true
+  - type: textarea
+    id: criterion
+    attributes:
+      label: What kind of acceptance criterion it checks
+      description: The sort of row that cannot honestly be closed by any existing method.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What the evidence looks like
+      description: The command that runs it, and what a reviewer reads to believe the result.
+      render: shell
+    validations:
+      required: true
+  - type: dropdown
+    id: generality
+    attributes:
+      label: How general is it
+      options:
+        - Most projects would want this
+        - Common for a kind of project (APIs, data pipelines, UIs…)
+        - Specific to our stack, offered as a data point
+    validations:
+      required: true

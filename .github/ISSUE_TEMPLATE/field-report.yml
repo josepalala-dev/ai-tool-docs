@@ -1,0 +1,50 @@
+name: Field report
+description: You used this on a real project. Tell us what happened, good or bad.
+title: "[field-report] "
+labels: ["field-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The most valuable issue type here, and the rarest. A report that a step was useless is
+        as useful as a patch — the author is the last person likely to notice.
+
+        No need to fill in every field. Prose is fine.
+  - type: textarea
+    id: context
+    attributes:
+      label: What you were building
+      description: Stack, rough size, how many people, whether an agent worked unattended.
+    validations:
+      required: true
+  - type: textarea
+    id: kept
+    attributes:
+      label: What you kept
+      description: Which parts of the loop survived contact with the work.
+  - type: textarea
+    id: dropped
+    attributes:
+      label: What you dropped, and why
+      description: The part your team silently skipped. This is the one we most want to hear.
+    validations:
+      required: true
+  - type: textarea
+    id: gate
+    attributes:
+      label: How the done gate behaved
+      description: >
+        Did it ever refuse something it should have allowed? Did anyone reach for --force,
+        and what for?
+  - type: textarea
+    id: calibration
+    attributes:
+      label: Thresholds and calibration
+      description: >
+        If you ran the semantic gate: which provider and model, what threshold you settled
+        on, and roughly how often it was right. Calibration does not transfer between
+        projects, so this data cannot be derived — only reported.
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else

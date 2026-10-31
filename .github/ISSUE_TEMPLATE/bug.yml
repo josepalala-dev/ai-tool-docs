@@ -1,0 +1,57 @@
+name: Bug report
+description: Something does not work the way the docs say it does.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reproduction is most of the fix. The matrix row and the exact command beat a description.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you ran, and what came back. Paste the output.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: The smallest sequence that shows it. A matrix row id and the command is usually enough.
+      placeholder: |
+        1. task-master import --from backlog.md
+        2. task-master set JEV-09 done
+        3. …
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit or version
+      description: "If you have a copy of the tool, `git rev-parse --short HEAD`. If you reimplemented it from these docs, say so instead."
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12.4"
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where it happened
+      options:
+        - task_master.py CLI
+        - MCP server / an agent calling the tools
+        - scaffold.py
+        - the decision model / Jev gate
+        - the docs
+        - somewhere else
+    validations:
+      required: true
