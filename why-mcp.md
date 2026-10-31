@@ -12,11 +12,15 @@ Here is what it actually buys, and the honest answer is only one of these three.
 
 <pre class="mermaid">
 flowchart TB
-    subgraph invented["script invented on the spot"]
-      I1["rule re-derived each session"] --> I2["lock written by<br/>the party being gated"] --> I3["arbitrary shell"]
+    subgraph invented["a script invented on the spot"]
+      direction TB
+      I1["the rule is re-derived each session"] --> I2["the lock is written by the party being gated"]
+      I2 --> I3["arbitrary shell to approve"]
     end
-    subgraph tool["MCP tool"]
-      M1["rule declared in tools/list,<br/>read before acting"] --> M2["one gate in code:<br/>human CLI and agent<br/>hit the same refusal"] --> M3["nine tools,<br/>matrix only"]
+    subgraph tool["an MCP tool"]
+      direction TB
+      M1["the rule is declared in tools/list, read before acting"] --> M2["one gate in code: human CLI and agent hit the same refusal"]
+      M2 --> M3["nine tools, matrix only"]
     end
 </pre>
 

@@ -10,15 +10,15 @@ plan, which is yours to write.
 
 <pre class="mermaid">
 flowchart LR
-    subgraph read["reads"]
-      R1["docs/dev-tasks/"]
-      R2["AGENTS.md"]
-      R3["docs/arch-docs/"]
-    end
-    E["/eval"] --> T["testing plan"] --> P["/write-plan"] --> D["/do-it"] --> V["/verify-it"]
-    read -.-> E
+    E["/eval"] --> T["testing plan"]
+    T --> P["/write-plan"]
+    P --> D["/do-it"]
+    D --> V["/verify-it"]
+    R1["docs/dev-tasks/"] -.read.-> E
+    R2["AGENTS.md"] -.read.-> E
+    R3["docs/arch-docs/"] -.read.-> E
     T -.writes.-> W1["docs/testing-plan/"]
-    P -.writes.-> W2[".plans/"]
+    P -.writes.-> W2[".plans/ (scratch)"]
     D -.writes.-> W3["code"]
     V -.writes.-> W4["docs/validation/"]
 </pre>

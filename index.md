@@ -29,16 +29,16 @@ no service, no database, no orchestration layer.
 
 <pre class="mermaid">
 flowchart TD
-    A["task-master next<br/><i>pick a row from the matrix</i>"] --> B["/eval<br/><i>read reality, quote the criteria</i>"]
-    B --> C["testing plan<br/><i>the contract for done</i>"]
-    C -->|human agrees| D["row → ready"]
-    D --> E["/write-plan<br/><i>numbered steps, still no code</i>"]
-    E -->|human approves| F["/do-it<br/><i>implement · row → in-progress</i>"]
-    F --> G["/verify-it<br/><i>run the gates, grade the contract</i>"]
-    G --> H["docs/validation/&lt;id&gt;.md<br/><i>method · verdict · evidence</i>"]
-    H --> I{"PASS?"}
-    I -->|yes| J["task-master set &lt;id&gt; done ✅"]
-    I -->|no| K["row → blocked<br/><i>notes say what is missing</i>"]
+    A["task-master next — pick a row"] --> B["/eval — read reality, quote the criteria"]
+    B --> C["testing plan — the contract for done"]
+    C -->|human agrees| D["row becomes ready"]
+    D --> E["/write-plan — numbered steps, no code yet"]
+    E -->|human approves| F["/do-it — implement, row in-progress"]
+    F --> G["/verify-it — run the gates, grade the contract"]
+    G --> H["docs/validation/ — method, verdict, evidence"]
+    H --> I{"verdict PASS?"}
+    I -->|yes| J["row becomes done"]
+    I -->|no| K["row becomes blocked, notes say why"]
     K --> B
     J --> A
 
