@@ -1,10 +1,14 @@
-# GitHub Pages serves this folder. No theme gem, no build step, no npm: push markdown and
-# the site updates itself, which is the whole requirement — the docs are the site.
+# GitHub Pages serves this repository root. No theme gem, no build step, no npm: push
+# markdown and the site updates itself — the docs are the site.
+#
+# This repo is consumed as the `docs/` submodule of josepalala-dev/ai-sdlc-tool, which is
+# private. Publishing the submodule rather than the parent is what lets the documentation and
+# the task matrix be public while the code stays private.
 title: ai-sdlc-tool
 description: A cheap, stack-agnostic software lifecycle for working with coding agents. Documents, not vibes.
 url: https://josepalala-dev.github.io
-baseurl: /ai-sdlc-tool
-repository: josepalala-dev/ai-sdlc-tool
+baseurl: /ai-sdlc-docs
+repository: josepalala-dev/ai-sdlc-docs
 github_repo: https://github.com/josepalala-dev/ai-sdlc-tool
 
 # Every page gets the layout without needing front matter, so the dogfooded docs under
