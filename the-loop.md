@@ -14,13 +14,13 @@ flowchart LR
     T --> P["/write-plan"]
     P --> D["/do-it"]
     D --> V["/verify-it"]
-    R1["docs/dev-tasks/"] -.read.-> E
-    R2["AGENTS.md"] -.read.-> E
-    R3["docs/arch-docs/"] -.read.-> E
-    T -.writes.-> W1["docs/testing-plan/"]
-    P -.writes.-> W2[".plans/ (scratch)"]
+    R1["the ticket"] -.read.-> E
+    R2["the project description"] -.read.-> E
+    R3["the design notes"] -.read.-> E
+    T -.writes.-> W1["the testing plan"]
+    P -.writes.-> W2["the plan (scratch)"]
     D -.writes.-> W3["code"]
-    V -.writes.-> W4["docs/validation/"]
+    V -.writes.-> W4["the validation record"]
 </pre>
 
 ## 1 · `/eval` — read reality
@@ -28,13 +28,13 @@ flowchart LR
 Reads the files, pulls the acceptance criteria **verbatim**, says what exists and what is
 missing, and names one real risk per file it will touch. No planning, no code.
 
-It looks in `docs/dev-tasks/` for the ticket, `AGENTS.md` for standards, and
-`docs/arch-docs/` for the design it has to fit.
+It reads the ticket for the criteria, the project description for the standards, and the
+design notes for the shape it has to fit.
 
 ## 2 · Testing plan — write the contract
 
-`docs/testing-plan/<id>-<slug>.md`. Every acceptance criterion becomes a row with a stated
-check. **A criterion you cannot check is a criterion you cannot claim.**
+One document per ticket. Every acceptance criterion becomes a row with a stated check.
+**A criterion you cannot check is a criterion you cannot claim.**
 
 Get this reviewed before step 3: it is cheaper to argue about the contract than the code.
 Then the matrix row goes to `ready`, which means the definition of done exists — not that
@@ -45,8 +45,8 @@ work has started.
 Numbered steps, one file change each, with `[ R ]` / `[ IP ]` / `[ D ]` markers. Still no
 code. Ends waiting for approval.
 
-`.plans/` is working scratch and is not committed. Its durable outputs are the testing plan
-and the matrix row.
+The plan is working scratch and is deliberately throwaway. Its durable outputs are the
+testing plan and the matrix row.
 
 ## 4 · `/do-it` — implement
 

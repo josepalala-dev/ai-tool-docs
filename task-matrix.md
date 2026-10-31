@@ -1,6 +1,6 @@
 ---
 title: Task matrix
-description: One CSV row per unit of work, and a done status that requires a validation document.
+description: One row per unit of work, and a done status that requires evidence attached to it.
 ---
 
 # The task matrix
@@ -64,7 +64,7 @@ tools hit the same refusal — a gate with two entrances is not a gate.
 
 | Criterion (from the matrix) | How it was checked | Result |
 |---|---|---|
-| A typed error names the cause | `python3 -m unittest tests.test_decision_model` | PASS |
+| A typed error names the cause | the project's own test command | PASS |
 | No probability is fabricated | same suite, `ProviderFailures` | PASS |
 ```
 
@@ -81,19 +81,19 @@ Pick whatever method the project already uses:
 **A criterion nothing checks is not a PASS.** It belongs under "Not covered", which makes
 the verdict PARTIAL and honestly keeps the row open.
 
-## Commands
+## The operations
 
-```bash
-task-master list                       # the matrix, with a done count
-task-master next                       # in-progress first, then ready, highest priority
-task-master show US-36                 # criteria verbatim, never truncated
-task-master set US-36 ready   --testing-plan docs/testing-plan/US-36-slug.md
-task-master set US-36 in-progress --plan .plans/2026-10-31-slug.md
-task-master validate US-36             # what evidence exists, and its verdict
-task-master set US-36 done             # refused without a passing validation doc
-task-master set US-36 blocked --note "waiting on SMTP credentials"
-task-master import --from backlog.md   # append rows from a pasted markdown table
-```
+Deliberately few. Read the matrix; ask what to work on next; read one row with its criteria
+verbatim; move a row; ask what evidence exists for a row; add a row; import rows from a
+pasted user-story table. Moving a row to `done` is the only one that can be refused.
 
-`--force` exists for a human who explicitly asks, and it writes that fact into the row's
-notes. A hole you can see in the chart beats one people work around by hand-editing the CSV.
+A forced override exists for a human who explicitly asks, and it records that fact in the
+row. A hole you can see in the chart beats one people work around by editing the record by
+hand — which is the real failure mode, and the reason the override is written down rather
+than removed.
+
+## What this gate cannot check
+
+That the evidence is about *this* row. The paperwork can be in order while the work is
+about something else entirely. Closing that gap needs a judgement rather than a rule, and
+that is [the second gate]({{ site.baseurl }}/second-gate.html) — a design, not a feature.

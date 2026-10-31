@@ -9,7 +9,7 @@ description: A cheap, stack-agnostic software lifecycle for working with coding 
 url: https://josepalala-dev.github.io
 baseurl: /ai-sdlc-docs
 repository: josepalala-dev/ai-sdlc-docs
-github_repo: https://github.com/josepalala-dev/ai-sdlc-tool
+github_repo: https://github.com/josepalala-dev/ai-sdlc-docs
 
 # Every page gets the layout without needing front matter, so the dogfooded docs under
 # docs/arch-docs/ and friends render styled without being edited.
@@ -21,8 +21,11 @@ defaults:
 
 # Working state, not site content.
 exclude:
-  - dev-tasks/tasks.csv
-  - dev-tasks/jev-backlog.md
+  - README.md
+  - arch-docs
+  - dev-tasks
+  - testing-plan
+  - validation
 
 kramdown:
   input: GFM

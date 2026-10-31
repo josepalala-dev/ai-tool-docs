@@ -48,6 +48,9 @@
   a { color: var(--accent); }
   p, li { color: var(--fg); }
   .lede { font-size: 1.12rem; color: var(--muted); margin: 0 0 2rem; }
+  .note { border-left: 3px solid var(--accent, #6b7fd7); background: var(--note-bg, rgba(127,127,127,.08));
+          padding: .9rem 1.1rem; margin: 0 0 2rem; border-radius: 0 4px 4px 0; font-size: .95rem; }
+  .note p { margin: 0; }
   code { font-family: var(--mono); font-size: 0.875em; background: var(--code-bg);
          padding: 0.15em 0.35em; border-radius: 4px; }
   pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px;
@@ -80,7 +83,8 @@
       <a href="{{ site.baseurl }}/the-loop.html">The loop</a>
       <a href="{{ site.baseurl }}/task-matrix.html">Task matrix</a>
       <a href="{{ site.baseurl }}/why-mcp.html">Why MCP</a>
-      <a href="{{ site.baseurl }}/reference.html">Reference</a>
+      <a href="{{ site.baseurl }}/second-gate.html">Second gate</a>
+      <a href="{{ site.baseurl }}/CONTRIBUTING.html">Contributing</a>
     </nav>
     <span class="spacer"></span>
     <nav><a href="{{ site.github_repo }}">GitHub ↗</a></nav>
@@ -92,8 +96,10 @@
     <p>
       MIT licensed · <a href="{{ site.github_repo }}">{{ site.repository }}</a> ·
       <a href="{{ site.github_repo }}/issues">issues</a> ·
-      <a href="{{ site.github_repo }}/blob/master/CONTRIBUTING.md">contributing</a>
+      <a href="{{ site.baseurl }}/CONTRIBUTING.html">contributing</a>
     </p>
+    <p>The method is published here under MIT. The implementation is a private repository —
+      <a href="{{ site.baseurl }}/CONTRIBUTING.html">what that means for contributing</a>.</p>
     <p>If this helps you, send back what you learned. That is the only way a method improves.</p>
   </footer>
 </main>

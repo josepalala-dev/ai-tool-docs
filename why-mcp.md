@@ -5,7 +5,7 @@ description: What an MCP server buys over an agent writing its own script — an
 
 # Why MCP
 
-An agent with shell access does not *need* MCP to edit a CSV. It can `cat tasks.csv`, write
+An agent with shell access does not *need* MCP to edit the matrix. It can read the file, write
 a throwaway script and rewrite the file. **MCP is not what makes this possible.**
 
 Here is what it actually buys, and the honest answer is only one of these three.
@@ -32,14 +32,14 @@ You can tell a kid the rule — but tomorrow there is a different kid.
 `tools/list` hands every new session the tool names, schemas and descriptions, including the
 sentence saying `done` is refused without a passing validation doc. A fresh agent with no
 memory of yesterday reads the rule **before** it tries anything. An agent inventing its own
-CSV handling re-derives the column layout every time, and re-derivation is where a column
+Hand-editing re-derives the layout every time, and re-derivation is where a field
 quietly disappears.
 
 ## 2 · The lock is on the jar, not in the kid's head
 
-The gate is Python, in one function. Whether a human types `task-master set US-36 done` or
+The gate is one rule in one place. Whether a human moves a row or
 an agent calls `task_set_status`, the same code refuses. An agent writing its own script to
-edit the CSV would be writing its own lock — or, far more likely, skipping it.
+edit the record directly would be writing its own lock — or, far more likely, skipping it.
 
 That is the exact failure this exists for: **an implementer that can tick off its own work
 ticks it off**, and ad-hoc tooling is authored by precisely the party the gate constrains.
@@ -53,33 +53,27 @@ shell. That matters for permission prompts and audit, not for capability.
 
 | Tool | Does |
 |------|------|
-| `task_list` | The whole matrix, with a done count |
-| `task_next` | In-progress first, then ready, highest priority |
-| `task_show` | One row in full, criteria verbatim |
-| `task_set_status` | Move a row — `done` goes through the gate |
-| `task_validation` | What evidence exists for a row, and its verdict |
-| `task_add` | A row for work that turned up |
-| `task_import` | Rows from a pasted markdown table |
-| `task_table` | The matrix as markdown, for pasting into a report |
-| `task_init` | Create the matrix |
+| Read the matrix | The whole thing, with a done count |
+| Ask what is next | In-progress first, then ready, highest priority |
+| Read one row | Criteria verbatim, never truncated |
+| Move a row | And `done` goes through the gate |
+| Ask what evidence exists | For a given row, with its verdict |
+| Add a row | For work that turned up |
+| Import rows | From a pasted user-story table |
 
-It speaks JSON-RPC on stdio using the **standard library only** — there is nothing to
-`pip install`.
-
-```bash
-python3 scaffold.py . --mcp     # writes .mcp.json
-```
+Each one is deliberately narrow. The agent is not handed a file to rewrite; it is handed
+the few questions and moves the process actually has.
 
 ## When MCP is not worth it
 
 A one-off transformation, something you will do once and never again, or a job the ordinary
 file tools already cover. The honest reading: **MCP pays for durability of the rule**, not
-for the ability to edit a CSV. Take the validation gate away — make the matrix just a list
-to read — and the server is mostly ceremony; `cat tasks.csv` would do.
+for the ability to edit a file. Take the validation gate away — make the matrix just a list
+to read — and the protocol is mostly ceremony; reading the file would do.
 
 One mechanical note, since "the agent could just invent it" sounds like the two are
 interchangeable: a model can write itself a script this turn, but it cannot register an MCP
-server into its own running session, because `.mcp.json` is read at startup. Invention gets
+server into its own running session, because that configuration is read at startup. Invention gets
 you a script now; MCP gets you a tool every turn from now on.
 
 ## A process gate, not a necessity
@@ -90,7 +84,7 @@ person is standing at the gate anyway.
 
 **Context is still a human job.** The matrix holds status, not judgement. Which row matters
 this week, whether a criterion is the *right* criterion, whether the thing being built is
-what anyone wanted — none of that is in a CSV and no tool call produces it.
+what anyone wanted — none of that is in the matrix and no tool call produces it.
 
 **Which is why the documents are thin.** A model reads all of this as language tokens, and
 judgement degrades as the pile grows: the more there is to parse at once, the more likely a
@@ -103,5 +97,6 @@ watched the test go red, then green. They *are* the gate. The MCP tooling is aim
 workflows with **no human in the loop** — an agent working a backlog overnight, where nobody
 is watching it tick the box.
 
-The full-length version of this argument lives in
-[ELI5-MCP.md](https://github.com/josepalala-dev/ai-sdlc-tool/blob/master/ELI5-MCP.md).
+What a gate like that cannot check — whether the evidence is about the right row — is
+[the second gate]({{ site.baseurl }}/second-gate.html), which is a design rather than a
+feature.
