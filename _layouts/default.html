@@ -103,10 +103,13 @@
     <p>If this helps you, send back what you learned. That is the only way a method improves.</p>
   </footer>
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.1/mermaid.min.js"></script>
-<script>
+<!-- Mermaid 11 is ESM-only: its package exports just an "import" entry, and dist/mermaid.min.js
+     is an esbuild IIFE that never assigns window.mermaid. A classic <script src> therefore
+     loads nothing usable at any URL, so this imports the module build instead. -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
   // Theme follows the OS. Mermaid cannot read CSS variables, so it gets the matching preset.
-  var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   mermaid.initialize({
     startOnLoad: true,
     theme: dark ? 'dark' : 'neutral',
