@@ -1,11 +1,11 @@
 blank_issues_enabled: true
 contact_links:
   - name: Question or idea
-    url: https://github.com/josepalala-dev/ai-sdlc-docs/discussions
+    url: https://github.com/josepalala-dev/ai-tool-docs/discussions
     about: Anything open-ended, or checking whether a change is wanted before you build it.
   - name: Security vulnerability
-    url: https://github.com/josepalala-dev/ai-sdlc-docs/security/advisories/new
+    url: https://github.com/josepalala-dev/ai-tool-docs/security/advisories/new
     about: Report privately. Please do not open a public issue for a vulnerability.
   - name: How to contribute
-    url: https://github.com/josepalala-dev/ai-sdlc-docs/blob/master/CONTRIBUTING.md
+    url: https://github.com/josepalala-dev/ai-tool-docs/blob/master/CONTRIBUTING.md
     about: What is worth sending, what will be declined, and the loop to follow.

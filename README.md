@@ -4,7 +4,7 @@ The published documentation for **ai-sdlc-tool**: a cheap, stack-agnostic softwa
 development lifecycle for working with coding agents, where every stage is a document on
 disk and nothing is marked done without evidence.
 
-**Site: [josepalala-dev.github.io/ai-sdlc-docs](https://josepalala-dev.github.io/ai-sdlc-docs)**
+**Site: [josepalala-dev.github.io/ai-tool-docs](https://josepalala-dev.github.io/ai-tool-docs)**
 
 ## Why this is a separate repository
 

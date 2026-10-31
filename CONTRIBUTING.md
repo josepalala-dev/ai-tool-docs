@@ -15,7 +15,7 @@ anything of you.
 
 | | Where | Licence |
 |---|---|---|
-| The method — the loop, the matrix, the gate, the document formats | This repository, and the [site](https://josepalala-dev.github.io/ai-sdlc-docs) | MIT |
+| The method — the loop, the matrix, the gate, the document formats | This repository, and the [site](https://josepalala-dev.github.io/ai-tool-docs) | MIT |
 | The implementation — the tooling that enforces it | Private | not published |
 
 The method is the part worth having, and the method is the part that is published. What
@@ -33,14 +33,14 @@ Everything goes to this repository.
 
 | What you have | Where it goes |
 |---|---|
-| A report from real use — thresholds, a false refusal, a step your team skipped | [New field report](https://github.com/josepalala-dev/ai-sdlc-docs/issues/new?labels=field-report&title=%5Bfield-report%5D%20) |
-| A validation method the formats don't cover | [New validation method](https://github.com/josepalala-dev/ai-sdlc-docs/issues/new?labels=validation-method&title=%5Bvalidation%5D%20) |
-| Something in the docs that is wrong, stale, or unclear | [New docs issue](https://github.com/josepalala-dev/ai-sdlc-docs/issues/new?labels=docs&title=%5Bdocs%5D%20) — or just open a pull request |
-| A bug in the behaviour the docs describe | [New bug report](https://github.com/josepalala-dev/ai-sdlc-docs/issues/new?labels=bug&title=%5Bbug%5D%20) |
-| An idea, or a question about whether something is wanted | [Open an issue](https://github.com/josepalala-dev/ai-sdlc-docs/issues/new) |
+| A report from real use — thresholds, a false refusal, a step your team skipped | [New field report](https://github.com/josepalala-dev/ai-tool-docs/issues/new?labels=field-report&title=%5Bfield-report%5D%20) |
+| A validation method the formats don't cover | [New validation method](https://github.com/josepalala-dev/ai-tool-docs/issues/new?labels=validation-method&title=%5Bvalidation%5D%20) |
+| Something in the docs that is wrong, stale, or unclear | [New docs issue](https://github.com/josepalala-dev/ai-tool-docs/issues/new?labels=docs&title=%5Bdocs%5D%20) — or just open a pull request |
+| A bug in the behaviour the docs describe | [New bug report](https://github.com/josepalala-dev/ai-tool-docs/issues/new?labels=bug&title=%5Bbug%5D%20) |
+| An idea, or a question about whether something is wanted | [Open an issue](https://github.com/josepalala-dev/ai-tool-docs/issues/new) |
 
-A look at [open](https://github.com/josepalala-dev/ai-sdlc-docs/issues) and
-[closed](https://github.com/josepalala-dev/ai-sdlc-docs/issues?q=is%3Aissue+is%3Aclosed)
+A look at [open](https://github.com/josepalala-dev/ai-tool-docs/issues) and
+[closed](https://github.com/josepalala-dev/ai-tool-docs/issues?q=is%3Aissue+is%3Aclosed)
 issues first saves a duplicate — a closed issue often carries the reasoning for a decision
 that is written down nowhere else.
 
@@ -110,7 +110,7 @@ filling in; prose is fine:
 - "Our threshold settled at X on project type Y."
 - "We reimplemented the matrix in Go because …"
 
-[Open a field report.](https://github.com/josepalala-dev/ai-sdlc-docs/issues/new?labels=field-report&title=%5Bfield-report%5D%20)
+[Open a field report.](https://github.com/josepalala-dev/ai-tool-docs/issues/new?labels=field-report&title=%5Bfield-report%5D%20)
 Say what you were building, what you kept and what you dropped.
 
 ## What will probably be declined
@@ -127,7 +127,7 @@ Say what you were building, what you kept and what you dropped.
 ## Security
 
 Do not file a vulnerability as a public issue. Use
-[private vulnerability reporting](https://github.com/josepalala-dev/ai-sdlc-docs/security/advisories/new),
+[private vulnerability reporting](https://github.com/josepalala-dev/ai-tool-docs/security/advisories/new),
 which keeps the report between you and the maintainer until there is a fix. The
 implementation is not published, so the useful report describes the behaviour rather than a
 line number.

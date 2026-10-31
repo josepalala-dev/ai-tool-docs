@@ -12,7 +12,7 @@ Every stage is a document on disk, and **nothing is marked done without evidence
 <div class="cta">
   <a class="primary" href="{{ site.baseurl }}/the-loop.html">How the loop works</a>
   <a href="{{ site.baseurl }}/task-matrix.html">The task matrix</a>
-  <a href="https://github.com/josepalala-dev/ai-sdlc-docs">This site on GitHub</a>
+  <a href="https://github.com/josepalala-dev/ai-tool-docs">This site on GitHub</a>
 </div>
 
 {: .note }
