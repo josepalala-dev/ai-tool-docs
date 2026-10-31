@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1a1a1a; --muted: #5c6370; --line: #e3e5e8;
+    --accent: #2f6f4f; --code-bg: #f6f7f8; --card: #fbfbfc;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16181c; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b2f36;
+      --accent: #7fc8a0; --code-bg: #1d2024; --card: #1b1e23;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16181c; --fg: #e6e8ea; --muted: #9aa3ad; --line: #2b2f36;
+    --accent: #7fc8a0; --code-bg: #1d2024; --card: #1b1e23;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 16px 6rem; }
+  header.site {
+    border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;
+    background: var(--bg); position: sticky; top: 0; z-index: 2;
+  }
+  header.site .wrap {
+    padding: 0.9rem 16px; display: flex; gap: 1.25rem; align-items: baseline; flex-wrap: wrap;
+  }
+  header.site a { color: var(--fg); text-decoration: none; }
+  header.site .brand { font-weight: 650; letter-spacing: -0.01em; }
+  header.site nav { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  header.site nav a { color: var(--muted); }
+  header.site nav a:hover, header.site nav a[aria-current] { color: var(--accent); }
+  header.site .spacer { flex: 1 1 auto; }
+  h1, h2, h3 { line-height: 1.25; letter-spacing: -0.02em; }
+  h1 { font-size: 2.1rem; margin: 0 0 0.5rem; }
+  h2 { font-size: 1.35rem; margin: 2.75rem 0 0.75rem; }
+  h3 { font-size: 1.05rem; margin: 2rem 0 0.5rem; }
+  a { color: var(--accent); }
+  p, li { color: var(--fg); }
+  .lede { font-size: 1.12rem; color: var(--muted); margin: 0 0 2rem; }
+  code { font-family: var(--mono); font-size: 0.875em; background: var(--code-bg);
+         padding: 0.15em 0.35em; border-radius: 4px; }
+  pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px;
+        padding: 0.9rem 1rem; overflow-x: auto; }
+  pre code { background: none; padding: 0; font-size: 0.84rem; line-height: 1.5; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.92rem; display: block; overflow-x: auto; }
+  th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); font-size: 0.82rem; text-transform: uppercase;
+       letter-spacing: 0.04em; }
+  blockquote { margin: 1.5rem 0; padding: 0.1rem 0 0.1rem 1rem; border-left: 3px solid var(--line);
+               color: var(--muted); }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
+  .cta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
+  .cta a { display: inline-block; padding: 0.55rem 1rem; border-radius: 7px; font-size: 0.93rem;
+           text-decoration: none; border: 1px solid var(--line); }
+  .cta a.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+  .mermaid { margin: 1.75rem 0; text-align: center; }
+  .mermaid[data-processed] { background: var(--card); border: 1px solid var(--line);
+                             border-radius: 8px; padding: 1rem 0.5rem; }
+  footer.site { border-top: 1px solid var(--line); margin-top: 4rem; padding-top: 1.25rem;
+                color: var(--muted); font-size: 0.88rem; }
+  footer.site a { color: var(--muted); }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <nav>
+      <a href="{{ site.baseurl }}/the-loop.html">The loop</a>
+      <a href="{{ site.baseurl }}/task-matrix.html">Task matrix</a>
+      <a href="{{ site.baseurl }}/why-mcp.html">Why MCP</a>
+      <a href="{{ site.baseurl }}/reference.html">Reference</a>
+    </nav>
+    <span class="spacer"></span>
+    <nav><a href="{{ site.github_repo }}">GitHub ↗</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  {{ content }}
+  <footer class="site">
+    <p>
+      MIT licensed · <a href="{{ site.github_repo }}">{{ site.repository }}</a> ·
+      <a href="{{ site.github_repo }}/issues">issues</a> ·
+      <a href="{{ site.github_repo }}/blob/master/CONTRIBUTING.md">contributing</a>
+    </p>
+    <p>If this helps you, send back what you learned. That is the only way a method improves.</p>
+  </footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.1/mermaid.min.js"></script>
+<script>
+  // Theme follows the OS. Mermaid cannot read CSS variables, so it gets the matching preset.
+  var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: dark ? 'dark' : 'neutral',
+    themeVariables: { fontFamily: 'inherit', fontSize: '14px' },
+    flowchart: { curve: 'basis', useMaxWidth: true },
+    securityLevel: 'strict'
+  });
+</script>
+</body>
+</html>

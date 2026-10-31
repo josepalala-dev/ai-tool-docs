@@ -1,0 +1,25 @@
+# GitHub Pages serves this folder. No theme gem, no build step, no npm: push markdown and
+# the site updates itself, which is the whole requirement — the docs are the site.
+title: ai-sdlc-tool
+description: A cheap, stack-agnostic software lifecycle for working with coding agents. Documents, not vibes.
+url: https://josepalala-dev.github.io
+baseurl: /ai-sdlc-tool
+repository: josepalala-dev/ai-sdlc-tool
+github_repo: https://github.com/josepalala-dev/ai-sdlc-tool
+
+# Every page gets the layout without needing front matter, so the dogfooded docs under
+# docs/arch-docs/ and friends render styled without being edited.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# Working state, not site content.
+exclude:
+  - dev-tasks/tasks.csv
+  - dev-tasks/jev-backlog.md
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
