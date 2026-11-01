@@ -73,6 +73,54 @@ status change is refused.
 | A one-file fix | Step 3. Nothing starts at step 4: with no plan there is nothing to execute |
 | A bug | `/debugging` instead of the loop — investigate, find the pattern, test hypotheses, then fix. It escalates to architectural review after three failed attempts rather than trying a fourth |
 | HTTP endpoints | `/api-testing` for the rows unit tests cannot cover |
+| Branching, deleting, force-pushing, opening a PR | `/git-safety` — optional, and not a stage of the loop |
+
+## Alongside the loop: git safety
+
+Optional, and deliberately not a step. The loop grades whether the work is *right*;
+`/git-safety` is about the operations around it that are *unrecoverable* if wrong.
+
+It draws one hard line: **an agent never deletes anything on a remote.** Not a branch, not
+a tag, not a release — not when the branch is merged, not when it is obviously stale, not
+when the human said "clean it up". Remote deletion reaches other people's clones and open
+reviews and is effectively irreversible, so the agent prints the command and the human runs
+it themselves. Everything local is fair game once containment is actually verified, because
+a local mistake costs one person a few minutes.
+
+The same test applies to rewriting published history: allowed when asked, but never a blind
+force-push, and the old and new commit ids get reported so anyone holding the old one can
+recover.
+
+### Release safety
+
+A second optional part, for projects that have a release process at all.
+
+The default branch is a guess. Plenty of projects integrate somewhere else — a development
+branch, a staging branch, a long-lived release branch per train, or a per-ticket
+integration branch — and branching off the wrong base or opening a review against the wrong
+target is not destructive, just expensive: a rebase, a re-review, sometimes a reverted
+merge.
+
+So before starting a branch or opening a review, read the project's own notes for the real
+target, and **quote the line that named it.** That is the difference between an auditable
+choice and a hunch. When nothing names it and more than one target is plausible, ask — one
+question is cheaper than a review retargeted afterwards. Two traps worth naming:
+
+- **Never infer the target from a merge-commit message.** Ticket ids get reused across
+  release branches, so a matching commit subject proves nothing about where the work landed.
+  Prove containment with the tooling instead.
+- **A branch far behind its target** will show a review full of other people's work and
+  conflict at merge time. Report how far behind it is rather than opening the review on top
+  of that.
+
+Documented deployment steps get the same treatment as remote deletion: follow the project's
+flow rather than a general-purpose guess, and any step the notes describe as a human's —
+cutting a tag, approving a promotion, touching production configuration — stays with the
+human.
+
+Both parts follow the question the rest of the loop never asks: *if this is wrong, who has
+to clean it up?* When the answer is somebody else, the agent hands it over instead of being
+helpful.
 
 ## Roles, and how each one fails
 
